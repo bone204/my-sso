@@ -15,6 +15,9 @@ services:
       - "8080:8080"
     volumes:
       - ./themes:/opt/keycloak/themes
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     restart: unless-stopped
 
   # Demo Client App 1: Workspace Portal (Port 3001)
