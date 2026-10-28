@@ -2,8 +2,8 @@
 
 This directory contains 2 independent client web applications designed to test and demonstrate cross-origin **Single Sign-On (SSO)** using PaSSO:
 
-1. **`demo/app1/`**: PaSSO Workspace Portal (Client ID: `passo-app1`, running on **Port 3001**)
-2. **`demo/app2/`**: PaSSO Analytics Portal (Client ID: `passo-app2`, running on **Port 3002**)
+1. **`demo/app1/`**: Nova Workspace (Client ID: `passo-app1`, running on **Port 3001**)
+2. **`demo/app2/`**: Pulse Analytics (Client ID: `passo-app2`, running on **Port 3002**)
 
 ---
 
@@ -18,16 +18,16 @@ This directory contains 2 independent client web applications designed to test a
              | 1. Authenticate Once                  | 2. Auto Single Sign-On
              v                                       v
 +-----------------------------+         +-----------------------------+
-|    App 1: Workspace Portal  | <=====> |    App 2: Analytics Portal  |
+|    App 1: Nova Workspace    | <=====> |   App 2: Pulse Analytics    |
 |    http://localhost:3001    |         |    http://localhost:3002    |
 +-----------------------------+         +-----------------------------+
 ```
 
-1. You visit **App 1** at `http://localhost:3001` $\rightarrow$ Click **"Sign In with PaSSO"**.
+1. You visit **Nova Workspace** at `http://localhost:3001` $\rightarrow$ Click **"Sign In with PaSSO"**.
 2. It redirects to Keycloak at `http://localhost:8080` displaying the **PaSSO** custom theme.
 3. You sign in once with your credentials.
-4. You are redirected back to **App 1** as an authenticated user with an active session.
-5. You open **App 2** at `http://localhost:3002` in a new tab $\rightarrow$ **App 2 automatically detects your existing PaSSO session** (cross-origin SSO) and logs you in immediately without prompting for your credentials again!
+4. You are redirected back to **Nova Workspace** as an authenticated user with an active session.
+5. You open **Pulse Analytics** at `http://localhost:3002` in a new tab $\rightarrow$ **Pulse Analytics automatically detects your existing PaSSO session** (cross-origin SSO) and logs you in immediately without prompting for your credentials again!
 6. Clicking **Sign Out** in either application terminates the central session on Keycloak.
 
 ---
@@ -40,8 +40,8 @@ Both demo applications are pre-configured in `docker-compose.yml` to run in thei
 docker compose up -d
 ```
 
-- **App 1 (Workspace Portal)**: [http://localhost:3001](http://localhost:3001)
-- **App 2 (Analytics Portal)**: [http://localhost:3002](http://localhost:3002)
+- **App 1 (Nova Workspace)**: [http://localhost:3001](http://localhost:3001)
+- **App 2 (Pulse Analytics)**: [http://localhost:3002](http://localhost:3002)
 
 ---
 
