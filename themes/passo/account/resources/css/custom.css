@@ -1,0 +1,312 @@
+/* ==========================================================================
+   PaSSO Keycloak 26 Account Console Theme - Modern Clean Minimalist Style
+   Inspired by mmlabs.online/apps/sso design language
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Root Tokens & Palette
+   -------------------------------------------------------------------------- */
+:root {
+  --passo-bg: #F8FAFC;
+  --passo-grid-dot: #E2E8F0;
+  --passo-card-bg: #FFFFFF;
+  --passo-border: #E2E8F0;
+  --passo-border-input: #CBD5E1;
+  --passo-text-primary: #0F172A;
+  --passo-text-secondary: #475569;
+  --passo-text-muted: #64748B;
+  --passo-primary-btn: #0F172A;
+  --passo-primary-btn-hover: #0284C7;
+  --passo-accent: #0284C7;
+  --passo-accent-hover: #0369A1;
+  --passo-social-hover: #F1F5F9;
+  --passo-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --passo-shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+
+  /* PatternFly v5 Overrides */
+  --pf-v5-global--font-family--sans-serif: var(--passo-font-sans);
+  --pf-v5-global--primary-color--100: var(--passo-accent);
+  --pf-v5-global--link--Color: var(--passo-accent);
+  --pf-v5-global--link--Color--hover: var(--passo-accent-hover);
+  --pf-v5-global--BackgroundColor--100: var(--passo-bg);
+  --pf-v5-global--BackgroundColor--200: var(--passo-bg);
+}
+
+/* --------------------------------------------------------------------------
+   2. Page Body & Dot-Grid Background
+   -------------------------------------------------------------------------- */
+body,
+#app,
+.pf-v5-c-page,
+.pf-c-page {
+  font-family: var(--passo-font-sans) !important;
+  background-color: var(--passo-bg) !important;
+  color: var(--passo-text-primary) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Apply dot-grid to main view */
+.pf-v5-c-page__main,
+.pf-c-page__main,
+.pf-v5-c-page__main-section,
+.pf-c-page__main-section {
+  background-color: var(--passo-bg) !important;
+  background-image: radial-gradient(var(--passo-grid-dot) 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+  background-position: 0 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. Header Masthead & Brand Logo
+   -------------------------------------------------------------------------- */
+.pf-v5-c-masthead,
+.pf-c-masthead {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid var(--passo-border) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+  padding: 8px 24px !important;
+  height: 64px !important;
+}
+
+/* Logo styling inside Masthead */
+.pf-v5-c-masthead__brand,
+.pf-c-masthead__brand,
+.pf-v5-c-masthead__brand-link,
+.pf-c-masthead__brand-link {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+.pf-v5-c-masthead__brand img,
+.pf-c-masthead__brand img,
+img[src*="passo-logo-full.png"] {
+  max-height: 40px !important;
+  height: 40px !important;
+  width: auto !important;
+  border-radius: 8px !important;
+  background-color: #F5F9FC !important;
+  border: 1px solid var(--passo-border) !important;
+  padding: 2px 8px !important;
+  object-fit: contain !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+  transition: transform 0.15s ease;
+}
+
+.pf-v5-c-masthead__brand img:hover,
+.pf-c-masthead__brand img:hover {
+  transform: translateY(-1px);
+}
+
+/* Masthead User Dropdown */
+.pf-v5-c-menu-toggle,
+.pf-c-menu-toggle {
+  background: transparent !important;
+  color: var(--passo-text-primary) !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+}
+
+.pf-v5-c-menu-toggle:hover,
+.pf-c-menu-toggle:hover {
+  background-color: #F1F5F9 !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. Sidebar Navigation
+   -------------------------------------------------------------------------- */
+.pf-v5-c-page__sidebar,
+.pf-c-page__sidebar {
+  background-color: #FFFFFF !important;
+  border-right: 1px solid var(--passo-border) !important;
+}
+
+.pf-v5-c-nav__link,
+.pf-c-nav__link {
+  color: var(--passo-text-secondary) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  border-radius: 8px !important;
+  margin: 4px 12px !important;
+  padding: 10px 14px !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+}
+
+.pf-v5-c-nav__link:hover,
+.pf-c-nav__link:hover {
+  background-color: #F1F5F9 !important;
+  color: var(--passo-text-primary) !important;
+}
+
+/* Active Nav Item */
+.pf-v5-c-nav__link.pf-m-current,
+.pf-c-nav__link.pf-m-current {
+  background-color: #E0F2FE !important;
+  color: #0284C7 !important;
+  font-weight: 600 !important;
+}
+
+.pf-v5-c-nav__link.pf-m-current::after,
+.pf-c-nav__link.pf-m-current::after {
+  border-left: 3px solid #0284C7 !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Content Cards & Panels
+   -------------------------------------------------------------------------- */
+.pf-v5-c-card,
+.pf-c-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid var(--passo-border) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--passo-shadow-soft) !important;
+  color: var(--passo-text-primary) !important;
+  margin-bottom: 24px !important;
+  transition: box-shadow 0.2s ease;
+}
+
+.pf-v5-c-card:hover,
+.pf-c-card:hover {
+  box-shadow: 0 6px 14px -2px rgba(0, 0, 0, 0.06) !important;
+}
+
+.pf-v5-c-card__title,
+.pf-c-card__title,
+.pf-v5-c-title,
+.pf-c-title {
+  color: var(--passo-text-primary) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   6. Form Inputs & Controls
+   -------------------------------------------------------------------------- */
+.pf-v5-c-form-control::before,
+.pf-v5-c-form-control::after,
+.pf-c-form-control::before,
+.pf-c-form-control::after {
+  display: none !important;
+}
+
+.pf-v5-c-form-control,
+.pf-c-form-control,
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  background-color: #FFFFFF !important;
+  border: 1px solid var(--passo-border-input) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  font-size: 14px !important;
+  color: var(--passo-text-primary) !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.pf-v5-c-form-control:focus,
+.pf-v5-c-form-control:focus-within,
+.pf-c-form-control:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  border-color: #0284C7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+  outline: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. Buttons (Primary & Secondary)
+   -------------------------------------------------------------------------- */
+.pf-v5-c-button::before,
+.pf-v5-c-button::after,
+.pf-c-button::before,
+.pf-c-button::after {
+  display: none !important;
+}
+
+/* Primary Button (Slate 900 hover Cyan) */
+.pf-v5-c-button.pf-m-primary,
+.pf-c-button.pf-m-primary {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+  border: 1px solid #0F172A !important;
+  border-radius: 8px !important;
+  padding: 10px 18px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
+  cursor: pointer;
+}
+
+.pf-v5-c-button.pf-m-primary:hover,
+.pf-c-button.pf-m-primary:hover {
+  background-color: #0284C7 !important;
+  border-color: #0284C7 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25) !important;
+}
+
+/* Secondary Button (Clean white with thin border) */
+.pf-v5-c-button.pf-m-secondary,
+.pf-c-button.pf-m-secondary {
+  background-color: #FFFFFF !important;
+  border: 1px solid var(--passo-border) !important;
+  border-radius: 8px !important;
+  color: var(--passo-text-secondary) !important;
+  padding: 10px 18px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
+}
+
+.pf-v5-c-button.pf-m-secondary:hover,
+.pf-c-button.pf-m-secondary:hover {
+  background-color: #F1F5F9 !important;
+  border-color: var(--passo-border-input) !important;
+  color: var(--passo-text-primary) !important;
+}
+
+/* Links */
+a,
+.pf-v5-c-button.pf-m-link,
+.pf-c-button.pf-m-link {
+  color: #0284C7 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+
+a:hover,
+.pf-v5-c-button.pf-m-link:hover,
+.pf-c-button.pf-m-link:hover {
+  color: #0369A1 !important;
+  text-decoration: underline !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. Tables, Badges & Lists
+   -------------------------------------------------------------------------- */
+.pf-v5-c-table,
+.pf-c-table {
+  background-color: #FFFFFF !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--passo-border) !important;
+  overflow: hidden;
+}
+
+.pf-v5-c-table th,
+.pf-c-table th {
+  background-color: #F8FAFC !important;
+  color: var(--passo-text-secondary) !important;
+  font-weight: 600 !important;
+  border-bottom: 1px solid var(--passo-border) !important;
+}
+
+.pf-v5-c-label.pf-m-blue,
+.pf-c-label.pf-m-blue {
+  background-color: #E0F2FE !important;
+  color: #0284C7 !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+}

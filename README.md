@@ -22,16 +22,24 @@ PaSSO/
 ├── docker-compose.yml          # Container orchestration for Keycloak 26
 ├── preview.html                # Visual comparison of logo styles
 └── themes/
-    └── passo/                  # Theme ID: passo
-        └── login/
+    └── passo/                  # Unified Theme ID: passo
+        ├── login/              # Authentication & Sign-In Theme
+        │   ├── theme.properties
+        │   ├── login.ftl
+        │   └── resources/
+        │       ├── css/custom.css
+        │       └── img/
+        ├── account/            # User Account Portal Console (React v3)
+        │   ├── theme.properties
+        │   └── resources/
+        │       ├── css/custom.css
+        │       └── img/
+        └── welcome/            # Server Root Landing Page (http://localhost:8080/)
             ├── theme.properties
-            ├── login.ftl
+            ├── index.ftl
             └── resources/
-                ├── css/
-                │   └── custom.css
+                ├── css/custom.css
                 └── img/
-                    ├── passo-logo-icon.png
-                    └── passo-logo-full.png
 ```
 
 ---
@@ -101,5 +109,8 @@ Double-click `preview.html` in your browser to inspect both layouts side-by-side
 1. Open Keycloak Admin Console at `http://localhost:8080/admin` (Credentials: `admin` / `admin`).
 2. Select your Realm (e.g. `master` or your custom realm).
 3. Navigate to **Realm settings** $\rightarrow$ **Themes** tab.
-4. Set **Login theme** to **`passo`**.
+4. Set:
+   - **Login theme**: Select **`passo`**
+   - **Account theme**: Select **`passo`**
 5. Click **Save** to apply immediately.
+6. To view the User Account Portal, navigate to: `http://localhost:8080/realms/<your-realm>/account/`.

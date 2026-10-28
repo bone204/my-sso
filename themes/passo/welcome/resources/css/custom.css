@@ -1,0 +1,157 @@
+/* ==========================================================================
+   PaSSO Keycloak 26 Welcome Page Theme - Modern Clean Minimalist Style
+   ========================================================================== */
+
+:root {
+  --passo-bg: #F8FAFC;
+  --passo-grid-dot: #E2E8F0;
+  --passo-card-bg: #FFFFFF;
+  --passo-border: #E2E8F0;
+  --passo-text-primary: #0F172A;
+  --passo-text-secondary: #475569;
+  --passo-text-muted: #64748B;
+  --passo-primary-btn: #0F172A;
+  --passo-primary-btn-hover: #0284C7;
+  --passo-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --passo-shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 32px 16px;
+  min-height: 100vh;
+  font-family: var(--passo-font-sans);
+  background-color: var(--passo-bg);
+  background-image: radial-gradient(var(--passo-grid-dot) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0;
+  color: var(--passo-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+.welcome-container {
+  max-width: 460px;
+  width: 100%;
+}
+
+.welcome-card {
+  background: var(--passo-card-bg);
+  border: 1px solid var(--passo-border);
+  border-radius: 16px;
+  box-shadow: var(--passo-shadow-soft);
+  padding: 36px 32px;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.welcome-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+.logo-banner-wrapper {
+  width: 230px;
+  height: 74px;
+  border-radius: 12px;
+  border: 1px solid var(--passo-border);
+  background-color: #F5F9FC;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logo-banner-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.12);
+}
+
+.logo-banner-img {
+  width: 135%;
+  height: 135%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.welcome-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--passo-text-primary);
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+}
+
+.welcome-subtitle {
+  font-size: 13px;
+  color: var(--passo-text-muted);
+  margin: 0 0 28px 0;
+}
+
+.welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--passo-primary-btn);
+  color: #FFFFFF;
+  border: 1px solid var(--passo-primary-btn);
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--passo-primary-btn-hover);
+  border-color: var(--passo-primary-btn-hover);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border: 1px solid var(--passo-border);
+  color: var(--passo-text-secondary);
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #F1F5F9;
+  border-color: #CBD5E1;
+  color: var(--passo-text-primary);
+  transform: translateY(-1px);
+}
+
+.welcome-footer {
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--passo-text-muted);
+  text-align: center;
+}
