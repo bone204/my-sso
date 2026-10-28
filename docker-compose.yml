@@ -17,6 +17,16 @@ services:
       - ./themes:/opt/keycloak/themes
     restart: unless-stopped
 
+  # Demo client web applications (Port 3000)
+  demo-apps:
+    image: nginx:alpine
+    container_name: passo-demo-apps
+    ports:
+      - "3000:80"
+    volumes:
+      - ./demo:/usr/share/nginx/html:ro
+    restart: unless-stopped
+
   # Optional: Local PostgreSQL service (alternative to Supabase)
   # Launch with: docker compose --profile local-db up -d
   postgres:

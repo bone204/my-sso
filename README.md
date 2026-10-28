@@ -77,12 +77,15 @@ KC_BOOTSTRAP_ADMIN_PASSWORD=admin
 ## Quick Start
 
 ```bash
-# Launch Keycloak connected to Supabase
+# Launch Keycloak and Demo Test Apps
 docker compose up -d
 
 # View live container logs
-docker compose logs -f keycloak
+docker compose logs -f
 ```
+
+- **Keycloak & Admin Console**: `http://localhost:8080` (Admin: `admin` / `admin`)
+- **Demo Client Apps Launcher**: `http://localhost:3000` (Access App 1 & App 2)
 
 *(To run an offline local PostgreSQL instance instead of Supabase: `docker compose --profile local-db up -d`)*
 
