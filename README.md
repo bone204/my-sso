@@ -85,7 +85,8 @@ docker compose logs -f
 ```
 
 - **Keycloak & Admin Console**: `http://localhost:8080` (Admin: `admin` / `admin`)
-- **Demo Client Apps Launcher**: `http://localhost:3000` (Access App 1 & App 2)
+- **Demo App 1 (Workspace Portal)**: `http://localhost:3001`
+- **Demo App 2 (Analytics Portal)**: `http://localhost:3002`
 
 *(To run an offline local PostgreSQL instance instead of Supabase: `docker compose --profile local-db up -d`)*
 

@@ -1,9 +1,9 @@
-# PaSSO - Test Client Applications (SSO Demonstration)
+# PaSSO - Test Client Applications (Cross-Origin SSO Demonstration)
 
-This directory contains 2 independent client web applications designed to test and demonstrate **Single Sign-On (SSO)** using PaSSO:
+This directory contains 2 independent client web applications designed to test and demonstrate cross-origin **Single Sign-On (SSO)** using PaSSO:
 
-1. **`app1.html`**: PaSSO Workspace Portal (Client ID: `passo-app1`)
-2. **`app2.html`**: PaSSO Analytics Portal (Client ID: `passo-app2`)
+1. **`demo/app1/`**: PaSSO Workspace Portal (Client ID: `passo-app1`, running on **Port 3001**)
+2. **`demo/app2/`**: PaSSO Analytics Portal (Client ID: `passo-app2`, running on **Port 3002**)
 
 ---
 
@@ -19,56 +19,50 @@ This directory contains 2 independent client web applications designed to test a
              v                                       v
 +-----------------------------+         +-----------------------------+
 |    App 1: Workspace Portal  | <=====> |    App 2: Analytics Portal  |
-|         (app1.html)         |         |         (app2.html)         |
+|    http://localhost:3001    |         |    http://localhost:3002    |
 +-----------------------------+         +-----------------------------+
 ```
 
-1. You log into **App 1** $\rightarrow$ It redirects to Keycloak with the **PaSSO** custom theme.
-2. You sign in once with your credentials.
-3. You are redirected back to **App 1** as an authenticated user.
-4. You open **App 2** in a new tab $\rightarrow$ **App 2 automatically detects your existing PaSSO session** and signs you in immediately without asking for your password again!
-5. When you click **Sign Out** in either app, it logs you out of the central PaSSO session.
+1. You visit **App 1** at `http://localhost:3001` $\rightarrow$ Click **"Sign In with PaSSO"**.
+2. It redirects to Keycloak at `http://localhost:8080` displaying the **PaSSO** custom theme.
+3. You sign in once with your credentials.
+4. You are redirected back to **App 1** as an authenticated user with an active session.
+5. You open **App 2** at `http://localhost:3002` in a new tab $\rightarrow$ **App 2 automatically detects your existing PaSSO session** (cross-origin SSO) and logs you in immediately without prompting for your credentials again!
+6. Clicking **Sign Out** in either application terminates the central session on Keycloak.
 
 ---
 
-## Quick Testing Options
+## Running with Docker Compose (Recommended)
 
-### Option A: Instant UI Simulation (No Server Needed)
-1. Double-click `app1.html` or `app2.html` directly in your browser.
-2. Click **"🧪 Test Simulation Mode"** at the bottom of the card.
-3. Experience the authenticated state, user profile card, decoded token viewer, and navigation between both apps.
+Both demo applications are pre-configured in `docker-compose.yml` to run in their own isolated Nginx containers:
+
+```bash
+docker compose up -d
+```
+
+- **App 1 (Workspace Portal)**: [http://localhost:3001](http://localhost:3001)
+- **App 2 (Analytics Portal)**: [http://localhost:3002](http://localhost:3002)
 
 ---
 
-### Option B: Live SSO Testing with Keycloak
+## Keycloak Client Configuration
 
-#### 1. Configure Clients in Keycloak Admin Console
-Log into `http://localhost:8080/admin` $\rightarrow$ Clients $\rightarrow$ Create client:
+Before live OIDC authentication, register both clients in the Keycloak Admin Console (`http://localhost:8080/admin`):
 
 * **Client 1**:
   - Client ID: `passo-app1`
   - Client authentication: `Off` (Public Client)
-  - Valid redirect URIs: `*` (or `http://localhost:*`)
-  - Web origins: `*`
+  - Valid redirect URIs: `http://localhost:3001/*`
+  - Web origins: `http://localhost:3001`
 
 * **Client 2**:
   - Client ID: `passo-app2`
   - Client authentication: `Off` (Public Client)
-  - Valid redirect URIs: `*` (or `http://localhost:*`)
-  - Web origins: `*`
+  - Valid redirect URIs: `http://localhost:3002/*`
+  - Web origins: `http://localhost:3002`
 
-#### 2. Serve the Demo Pages via a Local HTTP Server
-Because modern browsers restrict CORS requests from `file:///` URLs, serve the demo folder over HTTP:
+---
 
-```bash
-# Using Python:
-cd demo
-python -m http.server 3000
+## Instant UI Simulation Mode (No Keycloak Required)
 
-# OR using Node.js:
-npx serve demo -p 3000
-```
-
-Then visit:
-- **App 1**: `http://localhost:3000/app1.html`
-- **App 2**: `http://localhost:3000/app2.html`
+If Keycloak is not running, each app includes an interactive **"🧪 Test Simulation Mode"** button. This lets you inspect the authenticated layout, user profile card, decoded token viewer, and cross-application navigation directly in your browser.
