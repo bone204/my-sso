@@ -85,11 +85,11 @@ docker compose logs -f keycloak
 You can toggle between two logo presentations in `themes/passo/login/theme.properties`:
 
 ```properties
-# Option 1: App Icon (Recommended)
-passoLogoStyle=icon
+# Option 2: Full logo with brand typography (Active default)
+passoLogoStyle=full
 
-# Option 2: Full logo with brand typography
-# passoLogoStyle=full
+# Option 1: App Icon
+# passoLogoStyle=icon
 ```
 
 Double-click `preview.html` in your browser to inspect both layouts side-by-side.

@@ -6,7 +6,7 @@
 <!-- template: login.ftl -->
 
     <#if section = "header">
-        <#assign logoStyle = (properties.passoLogoStyle)!'icon'>
+        <#assign logoStyle = (properties.passoLogoStyle)!'full'>
         <div class="passo-brand-header">
             <#if logoStyle == "full">
                 <#-- Option 2: Full logo with PaSSO brand text -->
