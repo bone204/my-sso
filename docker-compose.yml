@@ -18,6 +18,8 @@ services:
     dns:
       - 8.8.8.8
       - 1.1.1.1
+    depends_on:
+      - postgres
     restart: unless-stopped
 
   # Demo Client App 1: Workspace Portal (Port 3001)
@@ -40,13 +42,10 @@ services:
       - ./demo/app2:/usr/share/nginx/html:ro
     restart: unless-stopped
 
-  # Optional: Local PostgreSQL service (alternative to Supabase)
-  # Launch with: docker compose --profile local-db up -d
+  # PostgreSQL service (Local DB for fast & reliable testing)
   postgres:
     image: postgres:16-alpine
     container_name: passo-postgres
-    profiles:
-      - local-db
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
