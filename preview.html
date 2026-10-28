@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaSSO Keycloak Theme - Logo Options Preview</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #F8FAFC;
+      background-image: radial-gradient(#E2E8F0 1px, transparent 1px);
+      background-size: 24px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: #0F172A;
+    }
+    .header-banner {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .header-banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px 0;
+      color: #0F172A;
+    }
+    .header-banner p {
+      color: #64748B;
+      font-size: 14px;
+      margin: 0;
+    }
+    .preview-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+      justify-content: center;
+      max-width: 960px;
+      width: 100%;
+    }
+    .option-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      padding: 32px;
+      width: 420px;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .option-card:hover {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    }
+    .tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+    .tag-blue {
+      background: #E0F2FE;
+      color: #0284C7;
+    }
+    .tag-slate {
+      background: #F1F5F9;
+      color: #475569;
+    }
+
+    /* Option 1: App Icon Style */
+    .passo-logo-icon-card {
+      width: 68px;
+      height: 68px;
+      border-radius: 16px;
+      border: 1px solid #E2E8F0;
+      background-color: #F5F9FC;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px auto;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .passo-logo-icon-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.16);
+    }
+    .passo-logo-icon-img {
+      width: 180%;
+      height: 180%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    /* Option 2: Full Logo Banner Style */
+    .passo-logo-full-card {
+      width: 220px;
+      height: 70px;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+      background-color: #F5F9FC;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px auto;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .passo-logo-full-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.12);
+    }
+    .passo-logo-full-img {
+      width: 135%;
+      height: 135%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    .passo-brand-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 19px;
+      font-weight: 700;
+      color: #0F172A;
+      letter-spacing: -0.02em;
+      margin-bottom: 2px;
+    }
+    .passo-brand-name {
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.03em;
+    }
+    .passo-brand-divider {
+      color: #94A3B8;
+      font-weight: 400;
+    }
+    .passo-brand-subtitle {
+      color: #475569;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .passo-brand-subtag {
+      font-size: 15px;
+      font-weight: 600;
+      color: #334155;
+      letter-spacing: -0.01em;
+      margin-bottom: 2px;
+    }
+    .passo-brand-desc {
+      margin: 0 0 24px 0;
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    /* Form Elements Mockup */
+    .form-group {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 14px;
+    }
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #0F172A;
+      background: #FFFFFF;
+      outline: none;
+    }
+    .form-btn {
+      width: 100%;
+      padding: 12px;
+      background: #0F172A;
+      color: #FFFFFF;
+      border: 1px solid #0F172A;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.15s ease;
+    }
+    .form-btn:hover {
+      background: #0284C7;
+      border-color: #0284C7;
+    }
+    .social-btn {
+      width: 100%;
+      padding: 10px;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      color: #334155;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .toggle-hint {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #94A3B8;
+      background: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      padding: 8px 12px;
+      border-radius: 8px;
+      width: 100%;
+    }
+    .toggle-hint code {
+      color: #0284C7;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-banner">
+    <h1>PaSSO | Logo Layout & Presentation Options</h1>
+    <p>Using 100% original high-resolution assets with rounded corners, subtle shadows, and crisp typography</p>
+  </div>
+
+  <div class="preview-grid">
+
+    <!-- OPTION 1: App Icon Style -->
+    <div class="option-card">
+      <span class="tag-badge tag-blue">🌟 Option 1: App Icon Style (Recommended)</span>
+      
+      <div class="passo-logo-icon-card">
+        <img src="themes/passo/login/resources/img/passo-logo-icon.png" alt="PaSSO Icon" class="passo-logo-icon-img" />
+      </div>
+      
+      <div class="passo-brand-title">
+        <span class="passo-brand-name">PaSSO</span>
+        <span class="passo-brand-divider">|</span>
+        <span class="passo-brand-subtitle">Single Sign-On</span>
+      </div>
+      <p class="passo-brand-desc">Sign in to your account</p>
+
+      <div class="form-group">
+        <label class="form-label">Username or email</label>
+        <input type="text" class="form-input" placeholder="user@example.com" value="admin" readonly>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" value="••••••••" readonly>
+      </div>
+
+      <button class="form-btn">Sign In</button>
+      <div class="social-btn">Sign In with Google</div>
+
+      <div class="toggle-hint">
+        Enable in <code>theme.properties</code>: <br>
+        <code>passoLogoStyle=icon</code> (Default)
+      </div>
+    </div>
+
+    <!-- OPTION 2: Full Logo Banner Style -->
+    <div class="option-card">
+      <span class="tag-badge tag-slate">✨ Option 2: Full Brand Logo Style</span>
+
+      <div class="passo-logo-full-card">
+        <img src="themes/passo/login/resources/img/passo-logo-full.png" alt="PaSSO Full Logo" class="passo-logo-full-img" />
+      </div>
+
+      <div class="passo-brand-subtag">Single Sign-On</div>
+      <p class="passo-brand-desc">Sign in to your account</p>
+
+      <div class="form-group">
+        <label class="form-label">Username or email</label>
+        <input type="text" class="form-input" placeholder="user@example.com" value="admin" readonly>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" value="••••••••" readonly>
+      </div>
+
+      <button class="form-btn">Sign In</button>
+      <div class="social-btn">Sign In with Google</div>
+
+      <div class="toggle-hint">
+        Enable in <code>theme.properties</code>: <br>
+        <code>passoLogoStyle=full</code>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

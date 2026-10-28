@@ -1,0 +1,608 @@
+/* ==========================================================================
+   PaSSO Keycloak 26 Theme - Modern Clean Minimalist Style
+   Inspired by mmlabs.online/apps/sso design language
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Root Variables & Reset
+   -------------------------------------------------------------------------- */
+:root,
+.pf-v5-theme-dark {
+  --passo-bg: #F8FAFC;
+  --passo-grid-dot: #E2E8F0;
+  --passo-card-bg: #FFFFFF;
+  --passo-border: #E2E8F0;
+  --passo-border-input: #CBD5E1;
+  --passo-text-primary: #0F172A;
+  --passo-text-secondary: #475569;
+  --passo-text-muted: #64748B;
+  --passo-primary-btn: #0F172A;
+  --passo-primary-btn-hover: #0284C7;
+  --passo-accent: #0284C7;
+  --passo-accent-hover: #0369A1;
+  --passo-social-hover: #F1F5F9;
+  --passo-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --passo-shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+
+  /* PatternFly v5 Overrides */
+  --pf-v5-global--font-family--sans-serif: var(--passo-font-sans);
+  --pf-v5-global--primary-color--100: var(--passo-accent);
+  --pf-v5-global--link--Color: var(--passo-accent);
+  --pf-v5-global--link--Color--hover: var(--passo-accent-hover);
+  --pf-v5-c-login__main--BackgroundColor: var(--passo-card-bg);
+  --pf-v5-c-login__container--MaxWidth: 440px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Body & Global Background
+   -------------------------------------------------------------------------- */
+html,
+body,
+body#keycloak-bg,
+body.login-pf {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--passo-font-sans) !important;
+  background-color: var(--passo-bg) !important;
+  background-image: radial-gradient(var(--passo-grid-dot) 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+  background-position: 0 0 !important;
+  color: var(--passo-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   3. Login Container & Layout Structure
+   -------------------------------------------------------------------------- */
+.pf-v5-c-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent !important;
+}
+
+.pf-v5-c-login__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 440px !important;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 !important;
+}
+
+/* Top header wrapper (if present outside card) */
+.pf-v5-c-login__header {
+  width: 100%;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+#kc-header-wrapper {
+  color: var(--passo-text-primary) !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   4. Login Card (.pf-v5-c-login__main)
+   -------------------------------------------------------------------------- */
+.pf-v5-c-login__main {
+  background: var(--passo-card-bg) !important;
+  border: 1px solid var(--passo-border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--passo-shadow-soft) !important;
+  padding: 32px !important;
+  max-width: 440px !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  color: var(--passo-text-primary) !important;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.pf-v5-c-login__main-header {
+  margin-bottom: 24px;
+  padding: 0 !important;
+  text-align: center;
+}
+
+/* Brand Title & Page Title */
+#kc-page-title,
+.pf-v5-c-login__main-header h1,
+.pf-v5-c-title {
+  color: var(--passo-text-primary) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  line-height: 1.35;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* Custom brand header inside login.ftl */
+.passo-brand-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+/* Option 1: App Icon Style */
+.passo-logo-icon-card {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  background-color: #F5F9FC;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.passo-logo-icon-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.16);
+}
+
+.passo-logo-icon-img {
+  width: 180%;
+  height: 180%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* Option 2: Full Logo Banner Style */
+.passo-logo-full-card {
+  width: 220px;
+  height: 70px;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  background-color: #F5F9FC;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.passo-logo-full-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.12);
+}
+
+.passo-logo-full-img {
+  width: 135%;
+  height: 135%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.passo-brand-subtag {
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+
+.passo-brand-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+}
+
+.passo-brand-name {
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.03em;
+}
+
+.passo-brand-divider {
+  color: #94A3B8;
+  font-weight: 400;
+  user-select: none;
+}
+
+.passo-brand-subtitle {
+  color: #475569;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.passo-brand-desc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--passo-text-muted);
+  font-weight: 400;
+}
+
+/* --------------------------------------------------------------------------
+   5. Form Inputs & Labels
+   -------------------------------------------------------------------------- */
+.pf-v5-c-form__group {
+  margin-bottom: 18px;
+}
+
+.pf-v5-c-form__group-label,
+.pf-v5-c-form__label,
+label {
+  display: block;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--passo-text-secondary) !important;
+  margin-bottom: 6px;
+}
+
+.pf-v5-c-form-control::before,
+.pf-v5-c-form-control::after {
+  display: none !important;
+}
+
+.pf-v5-c-form-control,
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  background-color: #FFFFFF !important;
+  border: 1px solid var(--passo-border-input) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  color: var(--passo-text-primary) !important;
+  font-size: 14px !important;
+  line-height: 1.5;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.pf-v5-c-form-control input {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  color: var(--passo-text-primary) !important;
+  font-size: 14px !important;
+  outline: none !important;
+  width: 100%;
+}
+
+/* Input Focus State */
+.pf-v5-c-form-control:focus,
+.pf-v5-c-form-control:focus-within,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  border-color: #0284C7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+  background-color: #FFFFFF !important;
+}
+
+/* Input Group & Password Visibility Button */
+.pf-v5-c-input-group {
+  display: flex;
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.pf-v5-c-input-group .pf-v5-c-input-group__item.pf-m-fill {
+  flex: 1 1 auto;
+}
+
+.pf-v5-c-input-group .pf-v5-c-form-control {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.pf-v5-c-button.pf-m-control {
+  background: #FFFFFF !important;
+  border: 1px solid var(--passo-border-input) !important;
+  border-left: none !important;
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+  color: var(--passo-text-muted) !important;
+  padding: 0 14px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.pf-v5-c-button.pf-m-control:hover {
+  color: var(--passo-text-primary) !important;
+  background-color: #F8FAFC !important;
+}
+
+/* Remember Me Checkbox */
+.pf-v5-c-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--passo-text-secondary);
+  cursor: pointer;
+  user-select: none;
+  margin-top: 4px;
+}
+
+.pf-v5-c-check__input,
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #0F172A;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.pf-v5-c-check__label {
+  font-size: 13px !important;
+  color: var(--passo-text-secondary) !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   6. Primary Button (Sign In)
+   -------------------------------------------------------------------------- */
+.pf-v5-c-button::before,
+.pf-v5-c-button::after {
+  display: none !important;
+}
+
+.pf-v5-c-button.pf-m-primary,
+button#kc-login,
+input[type="submit"] {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+  border: 1px solid #0F172A !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+  width: 100% !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
+  text-decoration: none !important;
+  margin-top: 8px;
+}
+
+.pf-v5-c-button.pf-m-primary:hover,
+button#kc-login:hover,
+input[type="submit"]:hover {
+  background-color: #0284C7 !important;
+  border-color: #0284C7 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25) !important;
+}
+
+.pf-v5-c-button.pf-m-primary:active,
+button#kc-login:active,
+input[type="submit"]:active {
+  transform: translateY(0) !important;
+  background-color: #0369A1 !important;
+  border-color: #0369A1 !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. Social / Identity Provider Buttons (Google, GitHub, etc.)
+   -------------------------------------------------------------------------- */
+.pf-v5-c-login__main-footer {
+  margin-top: 24px;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.pf-v5-c-login__main-footer-band {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0 16px 0;
+  color: var(--passo-text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pf-v5-c-login__main-footer-band::before,
+.pf-v5-c-login__main-footer-band::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid var(--passo-border);
+}
+
+.pf-v5-c-login__main-footer-band-item {
+  padding: 0 12px;
+  margin: 0;
+  color: var(--passo-text-muted);
+}
+
+.pf-v5-c-login__main-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pf-v5-c-login__main-footer-links-item {
+  width: 100%;
+}
+
+.pf-v5-c-login__main-footer-links-item-link,
+#kc-social-providers a,
+.zocial {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px;
+  background-color: #FFFFFF !important;
+  border: 1px solid var(--passo-border) !important;
+  color: #334155 !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.pf-v5-c-login__main-footer-links-item-link:hover,
+#kc-social-providers a:hover,
+.zocial:hover {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+  transform: translateY(-1px);
+}
+
+.pf-v5-c-login__main-footer-links-item-link svg,
+#kc-social-providers a svg {
+  width: 18px !important;
+  height: 18px !important;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8. Links (Forgot Password, Registration, Help)
+   -------------------------------------------------------------------------- */
+a,
+.pf-v5-c-button.pf-m-link,
+#kc-form-options a,
+#kc-registration a,
+.pf-v5-c-helper-text__item-text a {
+  color: #0284C7 !important;
+  text-decoration: none !important;
+  font-weight: 500;
+  font-size: 13px;
+  transition: color 0.15s ease, text-decoration 0.15s ease;
+}
+
+a:hover,
+.pf-v5-c-button.pf-m-link:hover,
+#kc-form-options a:hover,
+#kc-registration a:hover,
+.pf-v5-c-helper-text__item-text a:hover {
+  color: #0369A1 !important;
+  text-decoration: underline !important;
+}
+
+#kc-form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+#kc-registration-container {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--passo-border);
+  text-align: center;
+  font-size: 13px;
+  color: var(--passo-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   9. Alerts, Validation & Helper Texts
+   -------------------------------------------------------------------------- */
+.pf-v5-c-alert {
+  border-radius: 8px !important;
+  padding: 12px 14px !important;
+  margin-bottom: 18px !important;
+  font-size: 13px !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-width: 1px !important;
+}
+
+.pf-v5-c-alert.pf-m-danger {
+  background-color: #FEF2F2 !important;
+  border-color: #FECACA !important;
+  color: #991B1B !important;
+}
+
+.pf-v5-c-alert.pf-m-success {
+  background-color: #F0FDF4 !important;
+  border-color: #BBF7D0 !important;
+  color: #166534 !important;
+}
+
+.pf-v5-c-alert.pf-m-warning {
+  background-color: #FFFBEB !important;
+  border-color: #FDE68A !important;
+  color: #92400E !important;
+}
+
+.pf-v5-c-form__helper-text,
+.pf-v5-c-helper-text {
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+.pf-v5-c-helper-text__item-text.pf-m-error {
+  color: #DC2626 !important;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   10. Clean-up PatternFly Extras
+   -------------------------------------------------------------------------- */
+#kc-header {
+  display: none !important;
+}
+
+.pf-v5-c-login__main-body {
+  padding: 0 !important;
+}
+
+@media (max-width: 480px) {
+  .pf-v5-c-login {
+    padding: 16px 12px;
+  }
+  .pf-v5-c-login__main {
+    padding: 24px 20px !important;
+    border-radius: 12px !important;
+  }
+}
